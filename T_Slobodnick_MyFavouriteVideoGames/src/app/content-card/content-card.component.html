@@ -1,1 +1,12 @@
-<div id="card-container" [innerHTML]="contentList.displayAtIndex(0)+contentList.displayAtIndex(1)+contentList.displayAtIndex(2)"></div>
+<div class="card" *ngIf="content" id="card-{{content.id}}">
+    <p class="card-type">{{content.type}}</p>
+    <h5 class="card-title">{{content.title}}</h5>
+    <ul class="card-tags">
+        <li *ngFor="let tag of content.tags;" class="card-tag">{{tag}}</li>
+    </ul>
+    <img (click)="onImgClick()" class="card-img" src={{content.imgURL}} alt=""/>
+    <p class="card-description">{{content.description}}</p>
+    <div class="card-expand">
+        <p class="card-creator">{{content.creator}}</p>
+    </div>
+</div>

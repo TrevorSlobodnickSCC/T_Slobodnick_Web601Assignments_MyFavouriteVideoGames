@@ -1,0 +1,74 @@
+:host{
+    margin: 0.5rem 0px;
+    border: solid 1px black;
+    border-radius: 0.4rem;
+}
+
+:host.is-first{
+    border: solid 2px green;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-type{
+    background-color: lightgray;
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.7rem 0px;
+}
+
+.card-title{
+    font-size: 1.2rem;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0.5rem;
+    font-weight: 500;
+}
+
+.card-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px 0.5rem;
+    max-width: 100%;
+}
+
+.card-description{
+    padding: 0.75rem;
+}
+
+.card-expand{
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.card-creator {
+    color: #6c757d;
+    text-align: right;
+    padding-top: 0.7rem;
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+    padding-bottom: 1.1rem;
+}
+
+.card-tags{
+    list-style-type: none;
+    padding: 0.5rem;
+    display: flex;
+}
+
+.card-tag{
+    padding: 0.3rem;
+    border: solid thin black;
+    background-color: steelblue;
+    color: white;
+}

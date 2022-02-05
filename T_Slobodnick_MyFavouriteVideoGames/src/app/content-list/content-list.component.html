@@ -1,0 +1,4 @@
+<div id="card-container">
+    <app-content-card *ngFor="let c of content; index as i; first as isFirst" [content]="c" [class.is-first]="isFirst">
+    </app-content-card>
+</div>
