@@ -4,6 +4,52 @@
     justify-content: space-evenly;
 }
 
-#card-container > *{
+hr{
+    width: 100%;
+    height: 5px;
+    background-color: black;
+    margin: 3rem 10px;
+}
+
+#card-container > app-content-card{
     width: 375px;
+}
+
+
+/* Search Styles */
+#title-search{
+    padding: 1.2rem 2.5rem 0.9rem 2.5rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#title-search-label{
+    font-size: 1.3rem;
+    padding-right: 0.4rem;
+}
+
+#title-search-input{
+    padding: 0.5rem 0.3rem;
+    font-size: 1.2rem;
+}
+
+#search-btn{
+    padding: 0.5rem;
+    width: 2.6rem;
+}
+
+#msg-wrapper{
+    width: 100%;
+    text-align: right;
+    padding-top: 1rem;
+}
+
+.success{
+    color: green;
+}
+
+.error{
+    color: red;
 }

@@ -9,8 +9,14 @@ import { Content } from '../helper-files/content-interface';
 export class ContentListComponent implements OnInit {
 
   content: Content[]
+  titleSearch: string
+  titleFound: boolean
+  searchMsg: string
 
   constructor() {
+    this.titleSearch = ""
+    this.titleFound = false
+    this.searchMsg = ""
     this.content = [
       {
         id: 1,
@@ -61,15 +67,38 @@ export class ContentListComponent implements OnInit {
         id: 6,
         title: "Pokemon Brilliant Diamond/Shining Pearl",
         description: "Pokémon Brilliant Diamond/Shining Pearl are 2021 remakes of the 2006 Nintendo DS role-playing video games Pokémon Diamond/Pearl.",
-        creator: "ILCA",
+        creator: "Nintendo",
         imgURL: "https://upload.wikimedia.org/wikipedia/en/3/3e/Pokemon_Brilliant_Diamond_Shining_Pearl.png",
         type: "Adventure",
         tags: ["Pokemon"]
+      },
+      {
+        id: 7,
+        title: "Wii Play",
+        description: "Wii Play is a party video game developed and published by Nintendo for the Wii console.",
+        creator: "ILCA",
+        imgURL: "https://upload.wikimedia.org/wikipedia/en/9/9f/Wii_Play_Europe.jpg",
+        type: "",
+        tags: []
       }
     ]
   }
 
   ngOnInit(): void {
+  }
+
+  onTitleSearch(): void{
+    for (let i = 0; i < this.content.length; i++) {
+      const c = this.content[i];
+      if(c.title == this.titleSearch){
+        this.titleFound = true;
+        this.searchMsg = "Found title - \"" + this.titleSearch + "\"";
+        return; //exit loop and function once a match is found
+      }
+    }
+    //there was no match found...
+    this.titleFound = false;
+    this.searchMsg = "Could not find title - \"" + this.titleSearch + "\"";
   }
 
 }

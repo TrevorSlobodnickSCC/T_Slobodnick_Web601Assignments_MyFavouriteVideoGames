@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { ContentCardComponent } from './content-card/content-card.component';
 import { ContentListComponent } from './content-list/content-list.component';
+import { ContentTypeFilterPipe } from './content-type-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContentCardComponent,
-    ContentListComponent
+    ContentListComponent,
+    ContentTypeFilterPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

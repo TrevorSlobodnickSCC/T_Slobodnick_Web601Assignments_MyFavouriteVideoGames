@@ -8,6 +8,28 @@
     border: solid 2px green;
 }
 
+/* Type Styles */
+:host.type-rpg .card-type{
+    background-color: lightpink;
+}
+
+:host.type-socialsim .card-type{
+    background-color: lightblue;
+}
+
+:host.type-actionadventure .card-type{
+    background-color: red;
+}
+
+:host.type-adventure .card-type{
+    background-color: lightgreen;
+}
+
+:host.type-unset .card-type{
+    display: none;
+}
+/* Type Styles End */
+
 .card{
     display: flex;
     flex-direction: column;
