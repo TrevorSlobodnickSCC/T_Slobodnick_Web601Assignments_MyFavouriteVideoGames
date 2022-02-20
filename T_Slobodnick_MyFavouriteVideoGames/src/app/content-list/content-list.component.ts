@@ -25,7 +25,7 @@ export class ContentListComponent implements OnInit {
         creator: "Bethesda Game Studios",
         imgURL: "https://upload.wikimedia.org/wikipedia/en/1/15/The_Elder_Scrolls_V_Skyrim_cover.png",
         type: "RPG",
-        tags: []
+        tags: ["The Elder Scrolls"]
       },
       {
         id: 2,
@@ -34,16 +34,16 @@ export class ContentListComponent implements OnInit {
         creator: "Capcom",
         imgURL: "https://upload.wikimedia.org/wikipedia/en/1/1b/Monster_Hunter_World_cover_art.jpg",
         type: "RPG",
-        tags: []
+        tags: ["Monster Hunter"]
       },
       {
         id: 3,
         title: "Dark Souls III",
         description: "Dark Souls III is a 2016 action role-playing video game developed by FromSoftware and published by Bandai Namco Entertainment.",
         creator: "Havoc",
-        imgURL: "https://upload.wikimedia.org/wikipedia/en/b/bb/Dark_souls_3_cover_art.jpg",
+        imgURL: "",
         type: "RPG",
-        tags: []
+        tags: ["Dark Souls"]
       },
       {
         id: 4,
@@ -52,7 +52,7 @@ export class ContentListComponent implements OnInit {
         creator: "Rockstar Games",
         imgURL: "https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png",
         type: "Action-Adventure",
-        tags: []
+        tags: ["GTA", "Online"]
       },
       {
         id: 5,
@@ -61,7 +61,7 @@ export class ContentListComponent implements OnInit {
         creator: "Nintendo",
         imgURL: "https://upload.wikimedia.org/wikipedia/en/1/1f/Animal_Crossing_New_Horizons.jpg",
         type: "Social Simulation",
-        tags: []
+        tags: ["Animal Crossing"]
       },
       {
         id: 6,
