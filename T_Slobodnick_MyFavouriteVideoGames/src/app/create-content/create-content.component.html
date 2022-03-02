@@ -2,34 +2,37 @@
     <form class="form p-3" method="post" action="about:blank">
         <div class="mb-3">
             <label for="id-input">Id*</label>
-            <input #id type="text" name="id" id="id-input" class="form-control" required>
+            <input #id [(ngModel)]="idInp" type="text" name="id" id="id-input" class="form-control" required>
         </div>
         <div class="mb-3">
             <label for="title-input">Title*</label>
-            <input #title type="text" name="title" id="title-input" class="form-control" required>
+            <input #title [(ngModel)]="titleInp" type="text" name="title" id="title-input" class="form-control" required>
         </div>
         <div class="mb-3">
             <label for="description-input">Description*</label>
-            <textarea #description name="description" id="description-input" class="form-control" rows="4" required></textarea>
+            <textarea #description [(ngModel)]="descriptionInp" name="description" id="description-input" class="form-control" rows="4" required></textarea>
         </div>
         <div class="mb-3">
             <label for="creator-input">Creator*</label>
-            <input #creator type="text" name="creator" id="creator-input" class="form-control" required>
+            <input #creator [(ngModel)]="creatorInp" type="text" name="creator" id="creator-input" class="form-control" required>
         </div>
         <div class="mb-3">
             <label for="image-url-input">Image URL</label>
-            <input #imgURL type="text" name="image-url" id="image-url-input" class="form-control">
+            <input #imgURL [(ngModel)]="imgURLInp" type="text" name="image-url" id="image-url-input" class="form-control">
         </div>
         <div class="mb-3">
             <label for="type-input">Type</label>
-            <input #type type="text" name="type" id="type-input" class="form-control">
+            <input #type [(ngModel)]="typeInp" type="text" name="type" id="type-input" class="form-control">
         </div>
         <div class="mb-3">
             <label for="tags-input">Tags</label>
-            <input #tags type="text" name="tags" id="tags-input" class="form-control">
+            <input #tags [(ngModel)]="tagsInp" type="text" name="tags" id="tags-input" class="form-control">
         </div>
-        <div class="text-end">
+        <div class="d-flex flex-wrap justify-content-end">
             <input (click)="onFormSubmit(id.value, title.value, description.value, creator.value, imgURL.value, type.value, tags.value)" type="submit" id="create-content" value="Create Content" class="btn btn-success">
+            <div *ngIf="errorMsg" class="w-100">
+                <p class="mt-3 text-danger fw-bold text-end">{{errorMsg}}</p>
+            </div>
         </div>
     </form>
 </div>

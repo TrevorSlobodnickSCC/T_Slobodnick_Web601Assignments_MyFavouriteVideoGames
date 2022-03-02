@@ -101,10 +101,13 @@ export class ContentListComponent implements OnInit {
     this.searchMsg = "Could not find title - \"" + this.titleSearch + "\"";
   }
 
-  addContentToList(newContent: Content) {
-    this.content.push(newContent);
-    this.content = [...this.content];
-    console.log("New content added successfully - " + newContent.title); //inside success function
+  addContentToList(newContent: Promise<Content>) {
+    newContent.then(value => {
+      this.content.push(value)
+      this.content = [...this.content];
+      console.log("New content added successfully - " + value.title);
+    })
+    .catch(v => console.log(v))
   }
 
 }
