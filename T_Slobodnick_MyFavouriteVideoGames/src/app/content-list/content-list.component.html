@@ -11,6 +11,16 @@
         <p id="search-message" [class.success]="titleFound" [class.error]="!titleFound">{{searchMsg}}</p>
     </div>
 </div>
+<div>
+    <label>Add By Id:</label>
+    <input type="number" min="0" step="1" #addById />
+    <button (click)="onAddContent(addById.value)">Add</button>
+    <p class="error" id="add-content-error-msg">{{ addContentErrorMsg }}</p>
+</div>
+<div id="additional-cards">
+    <app-content-card class="single-content-card" *ngFor="let c of additionalContent.reverse()" [content]="c">
+    </app-content-card>
+</div>
 <div id="card-container">
     <!-- RPG -->
     <app-content-card class="type-rpg" *ngFor="let c of (content | contentTypeFilter: 'RPG'); first as isFirst;" [content]="c" [class.is-first]="isFirst">

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Content } from '../helper-files/content-interface';
+import { MyFavoriteVideoGamesService } from '../services/my-favorite-video-games.service';
 
 @Component({
   selector: 'app-content-list',
@@ -7,84 +8,50 @@ import { Content } from '../helper-files/content-interface';
   styleUrls: ['./content-list.component.scss']
 })
 export class ContentListComponent implements OnInit {
-
+  additionalContent: Content[]
   content: Content[]
   titleSearch: string
   titleFound: boolean
   searchMsg: string
+  addContentErrorMsg: string
 
-  constructor() {
+  constructor(public contentService: MyFavoriteVideoGamesService) {
     this.titleSearch = ""
     this.titleFound = false
     this.searchMsg = ""
-    this.content = [
-      {
-        id: 1,
-        title: "The Elder Scrolls V: Skyrim",
-        description: "The Elder Scrolls V: Skyrim is an open-world action role-playing video game developed by Bethesda Game Studios and published by Bethesda Softworks.",
-        creator: "Bethesda Game Studios",
-        imgURL: "https://upload.wikimedia.org/wikipedia/en/1/15/The_Elder_Scrolls_V_Skyrim_cover.png",
-        type: "RPG",
-        tags: ["The Elder Scrolls"]
-      },
-      {
-        id: 2,
-        title: "Monster Hunter: World",
-        description: "Monster Hunter: World is an action role-playing game developed and published by Capcom.",
-        creator: "Capcom",
-        imgURL: "https://upload.wikimedia.org/wikipedia/en/1/1b/Monster_Hunter_World_cover_art.jpg",
-        type: "RPG",
-        tags: ["Monster Hunter"]
-      },
-      {
-        id: 3,
-        title: "Dark Souls III",
-        description: "Dark Souls III is a 2016 action role-playing video game developed by FromSoftware and published by Bandai Namco Entertainment.",
-        creator: "Havoc",
-        imgURL: "",
-        type: "RPG",
-        tags: ["Dark Souls"]
-      },
-      {
-        id: 4,
-        title: "Grand Theft Auto V",
-        description: "Grand Theft Auto V is a 2013 action-adventure game developed by Rockstar North and published by Rockstar Games.",
-        creator: "Rockstar Games",
-        imgURL: "https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png",
-        type: "Action-Adventure",
-        tags: ["GTA", "Online"]
-      },
-      {
-        id: 5,
-        title: "Animal Crossing: New Horizons",
-        description: "Animal Crossing: New Horizons is a 2020 social simulation game developed and published by Nintendo for the Nintendo Switch.",
-        creator: "Nintendo",
-        imgURL: "https://upload.wikimedia.org/wikipedia/en/1/1f/Animal_Crossing_New_Horizons.jpg",
-        type: "Social Simulation",
-        tags: ["Animal Crossing"]
-      },
-      {
-        id: 6,
-        title: "Pokemon Brilliant Diamond/Shining Pearl",
-        description: "Pokémon Brilliant Diamond/Shining Pearl are 2021 remakes of the 2006 Nintendo DS role-playing video games Pokémon Diamond/Pearl.",
-        creator: "Nintendo",
-        imgURL: "https://upload.wikimedia.org/wikipedia/en/3/3e/Pokemon_Brilliant_Diamond_Shining_Pearl.png",
-        type: "Adventure",
-        tags: ["Pokemon"]
-      },
-      {
-        id: 7,
-        title: "Wii Play",
-        description: "Wii Play is a party video game developed and published by Nintendo for the Wii console.",
-        creator: "ILCA",
-        imgURL: "https://upload.wikimedia.org/wikipedia/en/9/9f/Wii_Play_Europe.jpg",
-        type: "",
-        tags: []
-      }
-    ]
+    this.content = []
+    this.additionalContent = []
+    this.addContentErrorMsg = ""
   }
 
   ngOnInit(): void {
+    this.contentService.getContentObs().subscribe(c => this.content = c);
+  }
+
+  onAddContent(id: string): void{
+    const ids = this.getContentIds();
+    let idNum = parseInt(id);
+    if(id == ""){
+      this.contentService.addMessage("No ID provided");
+      this.addContentErrorMsg = "No ID provided";
+    }
+    else if(id.includes(".")){
+      this.contentService.addMessage("ID values must not contain decimals");
+      this.addContentErrorMsg = "ID must not contain a decimal";
+    }
+    else if(ids.includes(idNum)){
+      this.contentService.getContentOb(idNum).subscribe(c => this.additionalContent.push(c));
+      this.addContentErrorMsg = "";
+    }
+    else{
+      this.contentService.addMessage("Invalid ID (" + id + ") provided. Accepted values are: " + ids.join(", "));
+      this.addContentErrorMsg = "Invalid Id";
+    }
+    //TODO: handle error
+  }
+
+  private getContentIds(){
+    return this.content.map(c => c.id)
   }
 
   onTitleSearch(): void{
