@@ -47,7 +47,6 @@ export class ContentListComponent implements OnInit {
       this.contentService.addMessage("Invalid ID (" + id + ") provided. Accepted values are: " + ids.join(", "));
       this.addContentErrorMsg = "Invalid Id";
     }
-    //TODO: handle error
   }
 
   private getContentIds(){
