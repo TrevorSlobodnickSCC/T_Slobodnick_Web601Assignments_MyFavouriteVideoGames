@@ -1,4 +1,4 @@
-#card-container{
+#card-container, #additional-cards{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -11,7 +11,7 @@ hr{
     margin: 3rem 10px;
 }
 
-#card-container > app-content-card{
+app-content-card{
     width: 375px;
 }
 
@@ -51,4 +51,8 @@ hr{
 
 .error{
     color: red;
+}
+
+.single-content-card{
+    box-shadow: 0px 0px 1rem black;
 }
