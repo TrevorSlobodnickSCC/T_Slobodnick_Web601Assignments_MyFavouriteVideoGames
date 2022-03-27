@@ -11,6 +11,11 @@ import { CreateContentComponent } from './create-content/create-content.componen
 import { FilterTagsPipe } from './filter-tags.pipe';
 import { MessagesComponent } from './messages/messages.component';
 
+import { HttpClientModule } from "@angular/common/http";
+import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
+import { InMemoryDataService } from "./services/in-memory-data.service";
+import { ModifyContentComponentComponent } from './modify-content-component/modify-content-component.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,11 +25,17 @@ import { MessagesComponent } from './messages/messages.component';
     HoverAffectDirective,
     CreateContentComponent,
     FilterTagsPipe,
-    MessagesComponent
+    MessagesComponent,
+    ModifyContentComponentComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+      dataEncapsulation: false,
+      delay: 1000,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
-<app-create-content (newGameEvent)="addContentToList($event)"></app-create-content>
+<!-- <app-create-content (newGameEvent)="addContentToList($event)"></app-create-content> -->
+<app-modify-content-component (newGameEvent)="addContentToList($event)" (updateGameEvent)="updateContentInList($event)"></app-modify-content-component>
 <div class="container mt-5">
     <div id="title-search">
         <label id="title-search-label" for="title-search-input">Search:</label>

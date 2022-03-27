@@ -24,9 +24,15 @@ export class ContentListComponent implements OnInit {
     this.addContentErrorMsg = ""
   }
 
-  ngOnInit(): void {
-    this.contentService.getContentObs().subscribe(c => this.content = c);
+  getContentFromServer(): void{
+    this.contentService.getContent().subscribe(c => this.content = c);
   }
+
+  ngOnInit(): void {
+    this.getContentFromServer();
+    // this.contentService.getContentObs().subscribe(c => this.content = c);
+  }
+    
 
   onAddContent(id: string): void{
     const ids = this.getContentIds();
@@ -40,7 +46,8 @@ export class ContentListComponent implements OnInit {
       this.addContentErrorMsg = "ID must not contain a decimal";
     }
     else if(ids.includes(idNum)){
-      this.contentService.getContentOb(idNum).subscribe(c => this.additionalContent.push(c));
+      //this.contentService.getContentOb(idNum).subscribe(c => this.additionalContent.push(c));
+      this.contentService.getContentById(idNum).subscribe(c => this.additionalContent.push(c))
       this.addContentErrorMsg = "";
     }
     else{
@@ -67,13 +74,27 @@ export class ContentListComponent implements OnInit {
     this.searchMsg = "Could not find title - \"" + this.titleSearch + "\"";
   }
 
-  addContentToList(newContent: Promise<Content>) {
-    newContent.then(value => {
-      this.content.push(value)
+  // addContentToList(newContent: Promise<Content>) {
+  //   newContent.then(value => {
+  //     this.content.push(value)
+  //     this.content = [...this.content];
+  //     console.log("New content added successfully - " + value.title);
+  //   })
+  //   .catch(v => console.log(v))
+  // }
+
+  addContentToList(newContentItem: Content): void {
+    this.contentService.addContent(newContentItem).subscribe(newContentFromServer => {
+      this.content.push(newContentFromServer)
       this.content = [...this.content];
-      console.log("New content added successfully - " + value.title);
-    })
-    .catch(v => console.log(v))
+    });
   }
+
+  updateContentInList(contentItem: Content): void {
+    this.contentService.updateContent(contentItem).subscribe(() => {
+      this.getContentFromServer();
+    });
+  }
+    
 
 }

@@ -8,7 +8,7 @@ import { Content } from '../helper-files/content-interface';
 })
 export class CreateContentComponent implements OnInit {
 
-  @Output() newGameEvent = new EventEmitter<Promise<Content>>();
+  @Output() newGameEvent = new EventEmitter<Content>();
  
   @Input() idInp: string;
   @Input() titleInp: string;
@@ -18,7 +18,7 @@ export class CreateContentComponent implements OnInit {
   @Input() typeInp: string;
   @Input() tagsInp: string;
 
-  newContent?: Promise<Content>;
+  newContent?: Content;
   errorMsg = "";
 
   constructor() { 
@@ -31,30 +31,32 @@ export class CreateContentComponent implements OnInit {
     this.tagsInp = ""
   }
 
-  onFormSubmit(id: string, title: string, description: string, creator: string, imgURL: string, type: string, tags: string){
-    let promise = new Promise<Content>((resolve, reject) => {
-      if(id && title && description && creator){
-        let nContent = {
-          id: parseInt(id),
-          title: title,
-          description: description,
-          creator: creator,
-          imgURL: imgURL,
-          type: type,
-          tags: tags.split(",")
-        };
-        this.errorMsg = "";
-        resolve(nContent);
-        this.resetForm()
-      }
-      else{
-        this.errorMsg = "Not all required fields contain values"
-        reject(this.errorMsg)
-      }
-    })
-    this.newContent = promise;
-    this.newGameEvent.emit(this.newContent); //causing odd behavior if not emitted
-  }
+  onFormSubmit(id: string, title: string, description: string, creator: string, imgURL: string, type: string, tags: string){}
+
+  // onFormSubmit(id: string, title: string, description: string, creator: string, imgURL: string, type: string, tags: string){
+  //   let promise = new Promise<Content>((resolve, reject) => {
+  //     if(id && title && description && creator){
+  //       let nContent = {
+  //         id: parseInt(id),
+  //         title: title,
+  //         description: description,
+  //         creator: creator,
+  //         imgURL: imgURL,
+  //         type: type,
+  //         tags: tags.split(",")
+  //       };
+  //       this.errorMsg = "";
+  //       resolve(nContent);
+  //       this.resetForm()
+  //     }
+  //     else{
+  //       this.errorMsg = "Not all required fields contain values"
+  //       reject(this.errorMsg)
+  //     }
+  //   })
+  //   this.newContent = promise;
+  //   this.newGameEvent.emit(this.newContent); //causing odd behavior if not emitted
+  // }
 
   resetForm(){
     this.idInp = ""
