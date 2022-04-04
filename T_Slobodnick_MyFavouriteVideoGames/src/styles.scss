@@ -5,3 +5,26 @@
     box-sizing: border-box;
     font-family: 'Verdana', 'Arial', 'sans-serif';
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Styles for SnackBar */
+.success, .failure{
+    background-color: white;
+    border: solid thin black;
+    color: black;
+}
+
+.success .mat-button-wrapper, .failure .mat-button-wrapper{
+    color: black;
+    font-weight: bold;
+}
+
+.success{
+    color: green;
+}
+
+.failure{
+    color: red;
+}

@@ -1,13 +1,17 @@
-<div class="card" *ngIf="content" id="card-{{content.id}}">
-    <p appHoverAffect [hoverAffect]='"underline"' class="card-type">{{content.type}}</p>
-    <h5 class="card-title">{{content.title}}</h5>
+<div mat-card class="card" *ngIf="content" id="card-{{content.id}}">
+    <mat-card-header>
+        <p appHoverAffect [hoverAffect]='"underline"' class="card-type">{{content.type}}</p>
+    </mat-card-header>
+    <h5 mat-card-title class="card-title">{{content.title}}</h5>
     <ul class="card-tags">
         <li appHoverAffect [hoverAffect]='"bold"' *ngFor="let tag of (content.tags | filterTags);" class="card-tag">{{tag}}</li>
     </ul>
-    <img *ngIf="content.imgURL" (click)="onImgClick()" class="card-img" src={{content.imgURL}} alt=""/>
-    <img *ngIf="!content.imgURL" (click)="onImgClick()" class="card-img unset" src="https://upload.wikimedia.org/wikipedia/commons/6/69/Amaray-case.jpg" alt=""/>
+    <img mat-card-image *ngIf="content.imgURL" (click)="onImgClick()" class="card-img" src={{content.imgURL}} alt=""/>
+    <img mat-card-image *ngIf="!content.imgURL" (click)="onImgClick()" class="card-img unset" src="https://upload.wikimedia.org/wikipedia/commons/6/69/Amaray-case.jpg" alt=""/>
+    <mat-card-content>
     <p class="card-description">{{content.description}}</p>
-    <div class="card-expand">
-        <p class="card-creator">{{content.creator}}</p>
-    </div>
+        <div class="card-expand">
+            <p class="card-creator">{{content.creator}}</p>
+        </div>
+    </mat-card-content>
 </div>
