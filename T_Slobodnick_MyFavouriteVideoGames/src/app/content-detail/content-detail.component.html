@@ -1,0 +1,24 @@
+
+<h3 class="title">
+    {{ game?.title }}
+  </h3>
+  <img *ngIf="game?.imgURL" class="image" [src]="game?.imgURL">
+  <p>
+    {{ game?.description }}
+  </p>
+  <div class="meta-data">
+    <div class="creator">
+      {{ game?.creator}}
+    </div>
+    <div *ngIf="game?.type" class="game?.type">
+      {{ game?.type }}
+    </div>
+    <div class="tags" *ngIf="game?.tags">
+      <span class="tag" *ngFor="let tag of game?.tags">
+        #{{ tag }}
+      </span>
+    </div>
+  </div>
+  <p>
+    <a mat-raised-button color="primary" routerLink="/list">Back to the list</a>
+  </p>

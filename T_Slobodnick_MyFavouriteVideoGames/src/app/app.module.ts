@@ -24,6 +24,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ContentDetailComponent } from './content-detail/content-detail.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
 
 
 @NgModule({
@@ -37,7 +41,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FilterTagsPipe,
     MessagesComponent,
     ModifyContentComponentComponent,
-    AddGameDialogComponent
+    AddGameDialogComponent,
+    ContentDetailComponent,
+    PageNotFoundComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +59,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     MatCardModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

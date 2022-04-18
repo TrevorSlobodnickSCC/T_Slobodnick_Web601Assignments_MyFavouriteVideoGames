@@ -9,7 +9,10 @@
     <img mat-card-image *ngIf="content.imgURL" (click)="onImgClick()" class="card-img" src={{content.imgURL}} alt=""/>
     <img mat-card-image *ngIf="!content.imgURL" (click)="onImgClick()" class="card-img unset" src="https://upload.wikimedia.org/wikipedia/commons/6/69/Amaray-case.jpg" alt=""/>
     <mat-card-content>
-    <p class="card-description">{{content.description}}</p>
+        <div>
+            <a  mat-raised-button color="primary" routerLink="/list/{{content.id}}">More Info</a>
+        </div>
+    <!-- <p class="card-description">{{content.description}}</p> -->
         <div class="card-expand">
             <p class="card-creator">{{content.creator}}</p>
         </div>
